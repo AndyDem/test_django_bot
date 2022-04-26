@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    container_name: test_django_bot_admin
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+  bot:
+    build: .
+    container_name: test_django_bot
+    command: python manage.py bot
+    depends_on:
+      - web
